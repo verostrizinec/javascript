@@ -1,0 +1,17 @@
+body {
+    margin: 0%;
+    margin-left: 10px;
+    background-color: bisque;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+ul {
+    font-weight: bold;
+    color: chocolate;
+    text-decoration: dotted;
+}
+
+li {
+    margin: 10px;
+    margin-left: 5px;
+}
