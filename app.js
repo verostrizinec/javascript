@@ -1,6 +1,6 @@
 // Proyecto JavaScript = TRITATO
 
-// Saludar al Usuario
+// Saludar al Usuario - 
 
 let nombreUsuario = prompt("Ingresa tu nombre")
 alert ("Bienvenido/a a Tritato" + " " + nombreUsuario)
@@ -66,30 +66,20 @@ console.log(buscarProducto)
 const buscarPedido = tritato.filter((producto) => producto.precio === 850)
 console.log(buscarPedido)
 
+// CREAR FUNCIONES PARA REALIZAR OPERACIONES
 
+let resultado = 0;
+
+function sumar (primerNumero, segundoNumero) {
+    resultado = primerNumero + segundoNumero
+}
+function mostrar (sumaDeProductos) {
+    console.log(sumaDeProductos)
+}
+sumar (500, 500)
+mostrar (resultado)
 
 
 
 console.log('Fin del programa')
 
-// ***DESAFIO ANTERIOR***
-// Calcular IVA de producto (Segundo desafio)
-
-// let precio = 10000;
-// let precioConIva = precio * 1.21;
-
-// alert (precioConIva)
-
-// console.log("Fin del Programa")
-
-// // Calcular precio de un producto
-// const suma = (a,b) => a + b
-// const resta = (a,b) => a - b
-// const iva = x => x * 0.21
-
-// let precioProducto = 10000
-// let descuento = 50
-
-// let nuevoPrecio = resta(suma(precioProducto, iva(precioProducto)), descuento)
-
-// console.log(nuevoPrecio)
