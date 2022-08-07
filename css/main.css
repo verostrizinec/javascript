@@ -9,6 +9,10 @@ body {
   margin: auto;
 }
 
+ul {
+  list-style: none;
+}
+
 .navbar {
   height: 150px;
   background-color: #e4b866;
@@ -140,5 +144,10 @@ div [class^="col-"]{
   transform: scale3d(1, 1, 1);
 }
 
-
+h5 {
+  text-decoration: underline;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 15px;
+}
 
