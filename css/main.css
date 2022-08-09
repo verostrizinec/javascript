@@ -1,7 +1,7 @@
 .container {
   max-width: 1200px;
   font-family: 'Quando', serif;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 body {
@@ -11,10 +11,20 @@ body {
 
 ul {
   list-style: none;
+  padding: 20px;
 }
 
 .navbar {
   height: 150px;
+  background-color: #e4b866;
+}
+
+.navbar-item {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.navbar-nav {
   background-color: #e4b866;
 }
 
@@ -26,7 +36,7 @@ header {
 
 .titulo {
   color: #B28735;
-  font-size: 45px;
+  font-size: 35px;
   font-family: 'Quando', serif;
   position: absolute;
   top: 50%;
@@ -45,6 +55,7 @@ header {
   font-weight: bold;
   padding-left: 20px;
   padding-right: 20px;
+  width: 180px;
 }
 
 .row-inicio {
@@ -75,12 +86,12 @@ header {
 }
 
 #row-nosotros p {
-  font-size: 16px;
+  font-size: 15px;
 
 }
 
 #row-precios {
-  font-size: 16px !important;
+  font-size: 15px !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,23 +100,23 @@ header {
 
 
 div [class^="col-"]{
-  padding-left:15px;
-  padding-right:15px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .card{
-  transition:0.5s;
-  cursor:pointer;
+  transition: 0.5s;
+  cursor: pointer;
 }
 .card-title{  
-  font-size:20px;
-  transition:1s;
-  cursor:pointer;
+  font-size: 20px;
+  transition: 1s;
+  cursor: pointer;
   text-align: center;
 }
 .card-title i{  
-  font-size:20px;
-  transition:1s;
-  cursor:pointer;
+  font-size: 16px;
+  transition: 1s;
+  cursor: pointer;
   color:#ffa710
   
 }
@@ -151,3 +162,37 @@ h5 {
   margin-top: 15px;
 }
 
+.contacto {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  text-align: end;
+}
+
+#row-contacto {
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.titulo-contacto {
+  margin-bottom: 15px;
+}
+
+/* footer */
+
+#footer {
+  background-color: #e4b866;
+  margin-top: 20px;
+}
+
+h6 {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+p .text-footer {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
