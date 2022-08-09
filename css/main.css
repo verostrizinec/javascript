@@ -19,9 +19,13 @@ ul {
   background-color: #e4b866;
 }
 
-.navbar-item {
+.nav-item {
   font-weight: bold;
   font-size: 15px;
+}
+
+.navbar-nav {
+  background-color: #412F26;
 }
 
 .navbar-nav {
@@ -94,7 +98,11 @@ header {
   font-size: 15px !important;
   display: flex;
   justify-content: center;
-  align-items: center;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
 }
 /* CARDS */
 
@@ -102,6 +110,7 @@ header {
 div [class^="col-"]{
   padding-left: 15px;
   padding-right: 15px;
+
 }
 .card{
   transition: 0.5s;
