@@ -45,7 +45,7 @@ header {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  padding-top: 50px;
+  padding-top: 20px;
 }
 
 .tituloColor { 
@@ -60,10 +60,6 @@ header {
   padding-left: 20px;
   padding-right: 20px;
   width: 180px;
-}
-
-.row-inicio {
-  background-image: url(/images/picada1.jpg);
 }
 
 .row {
@@ -171,21 +167,78 @@ h5 {
   margin-top: 15px;
 }
 
+/* CONTACTO */
+
+#row-contacto, .titulo-contacto {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
 .contacto {
   display: flex;
   justify-content: center;
-  margin-top: 30px;
-  text-align: end;
+  font-family: 'Quando', serif;
+  font-size: 15px;
+  margin-top: 25px;
 }
 
-#row-contacto {
+.btn {
+  display: flex;
+  justify-content: center;
   margin-top: 50px;
-  margin-bottom: 20px;
 }
 
-.titulo-contacto {
-  margin-bottom: 15px;
+/*formulario*/
+.formulario{  
+  width:600px;
+  margin:auto;
+  margin-top:30px;
+  padding:20px;
+  box-shadow: 0 0 20px 1px rgba(0,0,0,0.3);
+  position:relative;
 }
+.formulario__titulo{
+  text-align:center;
+  margin:0;
+  margin-bottom:40px;
+  
+}
+.formulario__input, .formulario__label, .formulario__submit{
+  display:block;
+  width:100%;
+}
+.formulario__input{
+  padding: 20px;
+  margin-bottom:40px;
+  background:rgba(0,0,0,0.1);
+  border:1px solid rgba(0,0,0,0.1);
+}
+.formulario__input:focus{
+  outline: 1px solid rgba(0,0,0,0.3);
+}
+.formulario__input:focus + .formulario__label{
+  margin-top:-120px;
+}
+.formulario__label{
+  padding-left:15px;
+  position:absolute;
+  margin-top:-78px;
+  color:rgba(0,0,0,0.3);
+  z-index:-20px;
+}
+
+.formulario__submit{
+  padding:15px;
+  color:white;
+  background-color:rgba(0,0,0,0.7);
+  cursor:pointer;
+  border:none;
+}
+.fijar{
+  margin-top:-120px;
+}
+
 
 /* footer */
 
@@ -204,4 +257,10 @@ p .text-footer {
   display: flex;
   align-items: center;
   justify-items: center;
+}
+
+/* producto */
+
+.header-producto {
+  height: 200px;
 }
