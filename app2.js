@@ -2,9 +2,9 @@
 
 // INTERACTUAR CON HTML modificando precios
 
-let FocacciaGrande = document.querySelector(".FocacciaGrande")
-FocacciaGrande.innerText = "Focaccia Grande = $1000"
-console.log (FocacciaGrande.innerText)
+let focacciaGrande = document.querySelector(".focacciaGrande")
+focacciaGrande.innerText = "Focaccia Grande = $1000"
+console.log (focacciaGrande.innerText)
 
 let brunch = document.getElementById("brunch")
 brunch.innerText = "Oferta del dia $3000"
