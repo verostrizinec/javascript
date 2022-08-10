@@ -35,3 +35,22 @@ agregarCarrito2.addEventListener('click', () => {
 agregarCarrito3.addEventListener('click', () => {
     console.log('Agregar Picada al Carrito')
 })
+
+// MODAL //
+
+const modalContainer = document.querySelector('#modal-container')
+
+const abrirModal = document.querySelector('#modal-open')
+const cerrarModal = document.querySelector('#modal-close')
+
+abrirModal.addEventListener('click', () => {
+    modalContainer.classList.add('modal-container-active')
+})
+
+cerrarModal.addEventListener('click',() =>{
+    modalContainer.classList.remove('modal-container-active')
+})
+
+
+
+
