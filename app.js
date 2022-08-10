@@ -75,16 +75,6 @@ function mostrar (sumaDeProductos) {
 sumar (500, 500)
 mostrar (resultado)
 
-// INTERACTUAR CON HTML modificando precios
-
-let FocacciaGrande = document.querySelector(".FocacciaGrande")
-FocacciaGrande.innerText = "Focaccia Grande = $1000"
-console.log (FocacciaGrande.innerText)
-
-let brunch = document.getElementById("brunch")
-brunch.innerText = "Oferta del dia $3000"
-console.log (brunch.innerText)
-
 // *Crear Elemento*
 
 const div = document.createElement('div')
@@ -94,12 +84,6 @@ div.className = "container my-2"
 div.innerHTML = "<h5>Todos los productos los podes acompañar con vino o cerveza</h5>"
 
 rowElaboraciones.append(div)
-
-const lista = document.querySelector('.lista')
-const li = document.createElement ('li')
-li.innerText = "Vino o cerveza a elección"
-
-lista.append(li)
 
 console.log(div)
 
