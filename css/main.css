@@ -96,27 +96,42 @@ header {
 
 }
 
+/* CARDS */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 #row-precios {
   font-size: 15px !important;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
 }
 
-.row {
-  display: flex;
-  justify-content: center;
+/* responsive */
+@media screen and (max-width:1000px){
+  .card {
+    width: 40%;
+  }
 }
-/* CARDS */
-
 
 div [class^="col-"]{
   padding-left: 15px;
   padding-right: 15px;
+  margin-bottom: 10px;
 
 }
 .card{
   transition: 0.5s;
   cursor: pointer;
+  margin-right: 40px;
+  width: 20%;
+  margin-bottom: 30px;
+
 }
 .card-title{  
   font-size: 20px;
@@ -173,6 +188,17 @@ h5 {
   margin-top: 15px;
 }
 
+.btn-outline-success, .btn-outline-danger {
+  background-color: #412F26;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 50px;
+  display: flex;
+}
+
 /* CONTACTO */
 
 #row-contacto, .titulo-contacto {
@@ -192,7 +218,7 @@ h5 {
 .btn {
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
 /*formulario*/
