@@ -43,14 +43,14 @@ console.log(buscarPedido)
 
 let resultado = 0;
 
-function sumar (primerNumero, segundoNumero) {
+function sumar(primerNumero, segundoNumero) {
     resultado = primerNumero + segundoNumero
 }
-function mostrar (sumaDeProductos) {
+function mostrar(sumaDeProductos) {
     console.log(sumaDeProductos)
 }
-sumar (500, 500)
-mostrar (resultado)
+sumar(500, 500)
+mostrar(resultado)
 
 // *Crear Elemento*
 
@@ -106,4 +106,11 @@ formulario.addEventListener('submit', (e) =>{
     }
 
     console.log(usuario)
+})
+
+/*Boton que te direcciona a la pagina de compra */
+
+const btnComprar = document.querySelector(".btn")
+btnComprar.addEventListener('click', () => {
+    location.href= "pages/quieroComprar.html"
 })
