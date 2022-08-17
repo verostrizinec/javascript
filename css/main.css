@@ -39,23 +39,57 @@ ul {
 }
 
 header {
-  height: 500px;
+  height: 300px;
   background-size: cover;
   position: relative;
 }
 
-.titulo {
-  color: #B28735;
-  font-size: 35px;
+#titulo {
+  color: #976c1c;
+  font-size: 45px;
   font-family: 'Quando', serif;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  padding-top: 20px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  text-align: left; 
+  font-weight:bold; 
+  text-shadow: -1px 0 #dab571, 0 1px #dab571, 1px 0 #dab571, 0 -1px #dab571, -2px 2px 0 #dab571, 2px 2px 0 #dab571, 1px 1px #dab571, 2px 2px #dab571, 3px 3px #dab571, 4px 4px #dab571, 5px 5px #dab571, 6px 6px #dab571, 7px 7px #dab571, 8px 8px #dab571, 9px 9px #dab571;
+}
+.slideInRight {
+  -webkit-animation-name: slideInRight;
+  animation-name: slideInRight;
+  -webkit-animation-duration: 2.5s;
+  animation-duration: 2.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  }
+  @-webkit-keyframes slideInRight {
+  0% {
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+  visibility: visible;
+  }
+  100% {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  }
+  }
+  @keyframes slideInRight {
+  0% {
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+  visibility: visible;
+  }
+  100% {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  }
+
 }
 
 .tituloColor { 
   color: #B28735;
+  margin-top: 50px;
 }
 
 .btn {
@@ -347,3 +381,4 @@ p .text-footer {
   opacity: 1;
   visibility: visible;
 }
+
