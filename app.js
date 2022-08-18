@@ -114,3 +114,25 @@ const btnComprar = document.querySelector(".btn")
 btnComprar.addEventListener('click', () => {
     location.href= "pages/quieroComprar.html"
 })
+
+//
+const btnGuardar = document.querySelector('.formulario__submit')
+
+const usuarios = JSON.parse( localStorage.getItem('usuarios') ) || []
+
+const guardarUsuario = () => {
+    const valueNombre = inputNombre.value
+    
+    usuarios.push({
+        nombre: valueNombre,
+    
+    })
+
+    localStorage.setItem('usuarios', JSON.stringify(usuarios) )
+
+    console.log(usuarios)
+
+    inputNombre.value = ''
+}
+
+btnGuardar.addEventListener('click', guardarUsuario)
