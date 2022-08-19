@@ -97,3 +97,18 @@ abrirModal.addEventListener('click', () => {
 cerrarModal.addEventListener('click',() =>{
     modalContainer.classList.remove('modal-container-active')
 })
+
+// Aplicando Libreria al Modal
+
+const btnModal = document.querySelector('#modal-open')
+btnModal.addEventListener('click', () => {
+
+    Swal.fire({
+        title: 'Vamos a preparar tu pedido!',
+        text: 'Elegi si queres continuar o seguir mirando',
+        icon: 'success',
+        confirmButtonText: 'Quiero seguir',
+        confirmButtonColor: '#412F26',
+})
+})
+

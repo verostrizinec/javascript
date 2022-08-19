@@ -110,7 +110,7 @@ formulario.addEventListener('submit', (e) =>{
 
 /*Boton que te direcciona a la pagina de compra */
 
-const btnComprar = document.querySelector(".btn")
+const btnComprar = document.querySelector(".btn-index")
 btnComprar.addEventListener('click', () => {
     location.href= "pages/quieroComprar.html"
 })
@@ -136,3 +136,18 @@ const guardarUsuario = () => {
 }
 
 btnGuardar.addEventListener('click', guardarUsuario)
+
+// Aplicando libreria al instagram del footer
+const instagram = document.querySelector('#text-footer')
+instagram.addEventListener('click', () => {
+   
+    Toastify({
+        text: "Click aca para ir al Instagram de Tritato",
+        duration: 3000,
+        destination: 'https://www.instagram.com/tritato_',
+        style: {
+        background: "linear-gradient(to right, #412F26, #e4b866)"
+        },
+    }).showToast();
+
+})

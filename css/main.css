@@ -98,6 +98,15 @@ header {
   font-weight: bold;
 }
 
+.btn-index {
+  background-color: #412F26;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  width: 150px;
+  margin-top: 15px;
+}
+
 .carrito1 {
   display: flex;
   justify-content: space-around;
@@ -321,11 +330,22 @@ h6 {
   margin-top: 20px;
 }
 
-p .text-footer {
+#text-footer {
   text-align: center;
   display: flex;
   align-items: center;
   justify-items: center;
+  outline: none;
+  text-decoration: none;
+  background-color: #e4b866;
+  border: none;
+}
+
+a {
+  font-family: 'Quando', serif;
+  font-size: 15px;
+  color: #412F26;
+
 }
 
 /* producto */
