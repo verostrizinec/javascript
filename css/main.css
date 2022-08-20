@@ -1,6 +1,7 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
   font-family: 'Quando', serif;
 }
 
@@ -22,6 +23,7 @@ ul {
 .navbar {
   height: 150px;
   background-color: #e4b866;
+  box-shadow: 0px 5px 4px 3px rgba(0, 0, 0, 0.3);
 }
 
 .nav-item {
@@ -97,7 +99,10 @@ header {
   color: white;
   font-weight: bold;
 }
-
+.btn-modal {
+  background-color: #e4b866;
+  border:none;
+}
 .btn-index {
   background-color: #412F26;
   border-radius: 20px;
@@ -105,11 +110,6 @@ header {
   font-weight: bold;
   width: 150px;
   margin-top: 15px;
-}
-
-.carrito1 {
-  display: flex;
-  justify-content: space-around;
 }
 
 .row {
@@ -120,6 +120,7 @@ header {
   border-radius: 50%;
   width: 200px;
   height: 200px;
+  text-align: center;
 }
 
 #row-nosotros {
@@ -140,24 +141,37 @@ header {
 
 }
 
-/* CARDS */
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
 #row-precios {
   font-size: 15px !important;
+  max-width: 1200px;
+  margin: 60px auto;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
 
 }
 
+.comida {
+  width: 100%;
+    margin-bottom: 10px;
+}
+
+.producto {
+  max-width: 250px;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-shadow: 2px 6px 3px 3px rgba(0, 0, 0, 0.3);
+}
+h5 {
+  text-decoration: underline;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+
 /* responsive */
-@media screen and (max-width:1000px){
+/* @media screen and (max-width:1000px){
   .card {
     width: 20%;
   }
@@ -234,12 +248,6 @@ div [class^="col-"]{
   justify-content: space-around;
 }
 
-h5 {
-  text-decoration: underline;
-  font-size: 20px;
-  text-align: center;
-  margin-top: 15px;
-}
 
 .btn-outline-success, .btn-outline-danger {
   background-color: #412F26;
@@ -250,7 +258,7 @@ h5 {
   padding-right: 20px;
   width: 50px;
   display: flex;
-}
+} */
 
 /* CONTACTO */
 
@@ -354,12 +362,6 @@ a {
   height: 200px;
 }
 
-.agregarCarrito {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
-
 /* modal */
 
 #modal-open {
@@ -406,3 +408,8 @@ a {
   visibility: visible;
 }
 
+/*carrito del nav*/
+
+#carrito {
+  margin-left: 20px;
+}
