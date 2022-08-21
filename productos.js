@@ -24,6 +24,16 @@ tritato.push(new producto (10, "Panificados", 550, "Pan de Masa Madre Chico", '.
 tritato.push(new producto (11, "Panificados", 500, "Pan Lacteado Artesano", '../images/panMasaMadre2.jpg'))
 tritato.push(new producto (12, "Panificados", 500, "Pan Lactal Integral", '../images/panMasaMadre2.jpg'))
 
+// Desestructuracion del array tritato
+
+const [a, b, c] = tritato
+console.log(a)
+console.log(b)
+console.log(c)
+
+// spread del array tritato
+
+console.log(...tritato)
 
 // MODAL //
 
@@ -31,6 +41,10 @@ const modalContainer = document.querySelector('#modal-container')
 
 const abrirModal = document.querySelector('#modal-open')
 const cerrarModal = document.querySelector('#modal-close')
+const btnModal = document.querySelector('#modal-open')
+const productos = document.querySelector('#row-precios')
+const carritoContenedor = document.querySelector('#modal')
+const precioTotal = document.querySelector('#preciototal')
 
 abrirModal.addEventListener('click', () => {
     modalContainer.classList.add('modal-container-active')
@@ -42,14 +56,13 @@ cerrarModal.addEventListener('click',() =>{
 
 // Aplicando Libreria al Modal
 
-const btnModal = document.querySelector('#modal-open')
 btnModal.addEventListener('click', () => {
 
     Swal.fire({
         title: 'Este es tu carrito!',
         text: 'Estas a tiempo de hacer modificaciones',
         icon: 'success',
-        confirmButtonText: 'Quiero seguir',
+        confirmButtonText: 'Ok',
         confirmButtonColor: '#412F26',
 })
 })
@@ -70,7 +83,6 @@ btnModal.addEventListener('click', () => {
 // } )
 
 // renderizado productos
-const productos = document.querySelector('#row-precios')
 
 tritato.forEach( (producto) => {
     const div = document.createElement('div')
@@ -87,6 +99,8 @@ tritato.forEach( (producto) => {
     `
     productos.append(div)
 
+// crear id para que agregué producto
+
     const btnAgregar = document.querySelector(`#agregar-${producto.id}`)
 
     btnAgregar.addEventListener('click', () => {
@@ -94,32 +108,80 @@ tritato.forEach( (producto) => {
     })
 })  
 
-// INTERACTUAR CON HTML modificando precios (uno de los desafios)
-
-let focacciaGrande = document.querySelector(".tipoDeProducto")
-focacciaGrande.innerText = "Focaccia Grande = $1000"
-console.log (focacciaGrande.innerText)
-
-// *Crear Elemento*
-
-const bebida = document.querySelector('.tipoDeProducto')
-const li = document.createElement ('li')
-li.innerText = "Vino o cerveza a elección"
-
-bebida.append(li)
-
-// hacer que los botones de agregar al carrito funcionen
-const carrito = []
+// hacer que los botones de agregar al carrito funcionen / operador lógico OR ( || )
+const carrito = JSON.parse(localStorage.getItem('carrito')) || []
 
 const agregarAlCarrito = (id) => {
     const producto = tritato.find( (prod) => prod.id === id)
 
     carrito.push(producto)
 
-    console.log(carrito)
+    localStorage.setItem('carrito', JSON.stringify(carrito))
+
+    renderCarrito()
 } 
 
-agregarAlCarrito(1)
-agregarAlCarrito(2)
-agregarAlCarrito(3)
+const eliminarDelCarrito = (id) => {
+    const producto = carrito.find((prod) => prod.id === id)
+    const indice = carrito.indexOf(producto)
+
+    carrito.splice(indice, 1)
+
+    localStorage.setItem('carrito', JSON.stringify(carrito))
+
+    renderCarrito()
+}
+const btnVaciar = document.querySelector('#vaciarCarrito')
+
+const vaciarCarrito = () => {
+    carrito.length = 0
+    localStorage.setItem('carrito', JSON.stringify(carrito))
+
+    renderCarrito()
+}
+
+btnVaciar.addEventListener('click', vaciarCarrito)
+
+// operador ternario AND
+
+carrito.length === 0 && console.log("El carrito está vacío!")
+
+// agregando productos al carrito
+
+const renderCarrito = () => {
+    // carritoContenedor.innerHTML = ""
+
+    carrito.forEach((prod) => { 
+               const div = document.createElement('div')
+               div.className = "productoEnCarrito"
+
+               div.innerHTML = `
+                        <p>${prod.tipoDeProducto}</p>
+                        <p>Precio: $${prod.precio}</p>
+                        <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
+                `
+
+               carritoContenedor.append(div)
+           
+    })
+
+actualizarCantidad()
+}
+
+const contadorCarrito = document.querySelector('#contadorCarrito')
+
+const actualizarCantidad = () => {
+    contadorCarrito.innerText = carrito.length
+}
+
+// reflejar el precio en el carrito
+
+const actualizarTotal = () => {
+    precioTotal.innerText = carrito.reduce((acc, prod) => acc *= prod.precio, 0)
+
+    actualizarTotal()
+}
+
+renderCarrito()
+//
 

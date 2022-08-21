@@ -42,26 +42,28 @@
                     <li class="nav-item">
                         <a class="nav-link" href="../index.html">Contacto</a>
                     </li>
-                    <li>
                       <button id="modal-open" class="btn-modal">
-                        <img src="../images/icons8-carro-favorito-24.png" width="40px" alt="carrito">
+                        <img src="../images/icons8-carro-favorito-24.png" width="40px" alt="carrito"><span id="contadorCarrito">0</span>
                       </button>
                       <div id="modal-container" class="modal-container">
                       <div id="modal" class="my-modal">
                       <h5 class="modal-title">Carrito!</h5>
-                          <p class="titulo-modal">Estas seguro de querer sumar este producto a tu carrito?</p>
-                   <!-- <div class="productoEnCarrito">
-                    <p>Buzo 1</p>
-                    <p>Precio: $1200</p>
-                    <button class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
-                </div> -->
-                      <div id="modal-footer">
-                          <button id="modal-close" type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, quiero otra cosa!</button>
-                          <button type="button" class="btn btn-primary">Si, lo quiero! ♥</button>
+                          <p class="titulo-modal">Estos son los productos de tu carrito</p>
+                      <div class="productoEnCarrito">
+                           <!-- <p>Picada</p>
+                           <p>Precio: $2750</p>
+                           <button class="boton-eliminar"><i class="fas fa-trash-alt"></i></button> -->
+                       </div>
+                        <div>
+                            <p class="precioProducto">Precio total: $ <span id="precioTotal">0</span></p>
+                         <button id="vaciarCarrito" class="boton-eliminar">Vaciar el carrito</button>
+                        </div>
+                        <div>
+                          <button id="modal-close" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuar comprando!</button>
+                          <button type="button" class="btn btn-primary">Finalizar compra! ♥</button>
+                        </div>
                       </div>
                       </div>
-                      </div>
-                    </li>
                 </ul>
             </div>
             </div>
@@ -81,18 +83,6 @@
   <button class="btn btn-outline-danger resta">-</button>
 </div>  -->
 </main>  
- <!--MODAL-->           
- <!-- <button id="modal-open" class="btn btn-primary">Completa tu compra</button>
- <div id="modal-container" class="modal-container">
- <div id="modal" class="my-modal">
- <h5 class="modal-title">Esto va directo a tu carrito!</h5>
-     <p class="titulo-modal">Estas seguro de querer sumar este producto a tu carrito?</p>
- <div id="modal-footer">
-     <button id="modal-close" type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, quiero otra cosa!</button>
-     <button type="button" class="btn btn-primary">Si, lo quiero! ♥</button>
- </div>
- </div>
- </div>  -->
 <!--Footer-->
 
 <footer id="footer">

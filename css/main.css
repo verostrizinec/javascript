@@ -11,6 +11,15 @@
   font-size: 15px;
 }
 
+#contadorCarrito {
+  font-family: 'Quando', serif;
+  font-size: 20px;
+  display: flex;
+  justify-content: end;
+  color: #976c1c;
+  margin-left: 5px;
+}
+
 body {
   background-color: #f8f3ea;
   margin: auto;
