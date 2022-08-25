@@ -340,6 +340,7 @@ div [class^="col-"]{
 #footer {
   background-color: #e4b866;
   margin-top: 20px;
+  font-size: 5px;
 }
 
 h6 {
@@ -364,6 +365,11 @@ a {
   color: #412F26;
 
 }
+
+.texto {
+  font-size: 10px;
+}
+
 
 /* producto */
 
