@@ -184,4 +184,21 @@ const actualizarTotal = () => {
 
 renderCarrito()
 //
+const bebidas = document.querySelector('#bebidas')
 
+fetch('/data.json')
+    .then( (res) => res.json())
+    .then( (data) => {
+
+        data.forEach((producto) => {
+            const li = document.createElement('li')
+            li.innerHTML = `
+                <p>${producto.nombre}</p>
+                <p>$${producto.precio}</p>
+                <p>Código: ${producto.id}</p>
+                <hr/>
+            `
+   
+            bebidas.append(li)
+        })
+    })

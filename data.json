@@ -1,0 +1,8 @@
+
+[
+    {"nombre": "Vino", "precio": 1500, "id": 1},
+    {"nombre": "Cerveza", "precio": 800, "id": 2},
+    {"nombre": "Gaseosa", "precio": 200, "id": 3}
+]
+
+
