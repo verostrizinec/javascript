@@ -36,23 +36,26 @@ console.log(c)
 console.log(...tritato)
 
 // MODAL //
-
 const modalContainer = document.querySelector('#modal-container')
+const carritoContenedor = document.querySelector('#modal')
 
 const abrirModal = document.querySelector('#modal-open')
 const cerrarModal = document.querySelector('#modal-close')
 const btnModal = document.querySelector('#modal-open')
-const productos = document.querySelector('#row-precios')
-const carritoContenedor = document.querySelector('#modal')
 const precioTotal = document.querySelector('#preciototal')
 
 abrirModal.addEventListener('click', () => {
-    modalContainer.classList.add('modal-container-active')
+    modalContainer.classList.toggle('modal-container-active')
 })
 
 cerrarModal.addEventListener('click',() =>{
-    modalContainer.classList.remove('modal-container-active')
+    modalContainer.classList.toggle('modal-container-active')
 })
+
+carritoContenedor.addEventListener('click', (event)=>{
+    event.stopPropagation()
+})
+
 
 // Aplicando Libreria al Modal
 
@@ -67,22 +70,8 @@ btnModal.addEventListener('click', () => {
 })
 })
 
-// const carrito = document.querySelector('.btn')
-// carrito.addEventListener('click', () => {
-
-//     Swal.fire({
-//         position: 'top-end',
-//         icon: 'success',
-//         title: 'Agregaste este producto al carrito!',
-//         showConfirmButton: false,
-//         timer: 2500,
-//         width: 500,
-//         height: 300,
-//     })
-    
-// } )
-
 // renderizado productos
+const productos = document.querySelector('#productosContenedor')
 
 tritato.forEach( (producto) => {
     const div = document.createElement('div')
@@ -95,18 +84,25 @@ tritato.forEach( (producto) => {
                  <p class="precioProducto">Precio: $${producto.precio}</p>
                  <img src="../images/icons8-carro-favorito-24.png" width="30px" alt="Agregar al Carrito">
                  <button id="agregar-${producto.id}" class="btn btn-outline-success suma">+</button>
-                 <button class="btn btn-outline-danger resta">-</button>
+                 <button id="eliminar-${producto.id}" class="btn btn-outline-danger resta">-</button>
     `
     productos.append(div)
 
-// crear id para que agregué producto
+// crear id para que agregue y elimine producto al carrito con los botones + y -
 
     const btnAgregar = document.querySelector(`#agregar-${producto.id}`)
 
     btnAgregar.addEventListener('click', () => {
         agregarAlCarrito(producto.id)
     })
+
+    const btnEliminar = document.querySelector(`#eliminar-${producto.id}`)
+
+    btnEliminar.addEventListener('click', () => {
+        eliminarDelCarrito(producto.id)
+    } )
 })  
+
 
 // hacer que los botones de agregar al carrito funcionen / operador lógico OR ( || )
 const carrito = JSON.parse(localStorage.getItem('carrito')) || []
@@ -117,6 +113,8 @@ const agregarAlCarrito = (id) => {
     carrito.push(producto)
 
     localStorage.setItem('carrito', JSON.stringify(carrito))
+
+    console.log(carrito)
 
     renderCarrito()
 } 
@@ -142,9 +140,6 @@ const vaciarCarrito = () => {
 
 btnVaciar.addEventListener('click', vaciarCarrito)
 
-// operador ternario AND
-
-carrito.length === 0 && console.log("El carrito está vacío!")
 
 // agregando productos al carrito
 
@@ -158,7 +153,7 @@ const renderCarrito = () => {
                div.innerHTML = `
                         <p>${prod.tipoDeProducto}</p>
                         <p>Precio: $${prod.precio}</p>
-                        <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
+                        <button onclick="eliminarDelcarrito(${prod.id}) class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
                 `
 
                carritoContenedor.append(div)
@@ -174,6 +169,10 @@ const actualizarCantidad = () => {
     contadorCarrito.innerText = carrito.length
 }
 
+// operador ternario AND
+
+carrito.length === 0 && console.log("El carrito está vacío!")
+
 // reflejar el precio en el carrito
 
 const actualizarTotal = () => {
@@ -183,7 +182,9 @@ const actualizarTotal = () => {
 }
 
 renderCarrito()
-//
+
+// agregando opciones de bebidas con fetch
+
 const bebidas = document.querySelector('#bebidas')
 
 fetch('/data.json')
