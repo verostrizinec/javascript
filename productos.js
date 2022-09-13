@@ -42,7 +42,7 @@ const carritoContenedor = document.querySelector('#modal')
 const abrirModal = document.querySelector('#modal-open')
 const cerrarModal = document.querySelector('#modal-close')
 const btnModal = document.querySelector('#modal-open')
-const precioTotal = document.querySelector('#preciototal')
+const precioTotal = document.querySelector('#precioTotal')
 
 abrirModal.addEventListener('click', () => {
     modalContainer.classList.toggle('modal-container-active')
@@ -105,7 +105,8 @@ tritato.forEach( (producto) => {
 
 
 // hacer que los botones de agregar al carrito funcionen / operador lógico OR ( || )
-const carrito = JSON.parse(localStorage.getItem('carrito')) || []
+let carrito = JSON.parse(localStorage.getItem('carrito')) || []
+const productosContenedor = document.querySelector('#productosEnCarrito')
 
 const agregarAlCarrito = (id) => {
     const producto = tritato.find( (prod) => prod.id === id)
@@ -132,8 +133,9 @@ const eliminarDelCarrito = (id) => {
 const btnVaciar = document.querySelector('#vaciarCarrito')
 
 const vaciarCarrito = () => {
-    carrito.length = 0
-    localStorage.setItem('carrito', JSON.stringify(carrito))
+    carrito = []
+    localStorage.removeItem('carrito')
+    productosContenedor.innerHTML = null
 
     renderCarrito()
 }
@@ -144,7 +146,7 @@ btnVaciar.addEventListener('click', vaciarCarrito)
 // agregando productos al carrito
 
 const renderCarrito = () => {
-    // carritoContenedor.innerHTML = ""
+    productosContenedor.innerHTML = null;
 
     carrito.forEach((prod) => { 
                const div = document.createElement('div')
@@ -153,14 +155,15 @@ const renderCarrito = () => {
                div.innerHTML = `
                         <p>${prod.tipoDeProducto}</p>
                         <p>Precio: $${prod.precio}</p>
-                        <button onclick="eliminarDelcarrito(${prod.id}) class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
+                        <button onclick="eliminarDelcarrito(${prod.id})" class="boton-eliminar"><i class="fa fa-trash-alt"></i></button>
                 `
 
-               carritoContenedor.append(div)
+               productosContenedor.append(div)
            
     })
 
 actualizarCantidad()
+actualizarTotal()
 }
 
 const contadorCarrito = document.querySelector('#contadorCarrito')
@@ -176,9 +179,7 @@ carrito.length === 0 && console.log("El carrito está vacío!")
 // reflejar el precio en el carrito
 
 const actualizarTotal = () => {
-    precioTotal.innerText = carrito.reduce((acc, prod) => acc *= prod.precio, 0)
-
-    actualizarTotal()
+    precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.precio, 0)
 }
 
 renderCarrito()
