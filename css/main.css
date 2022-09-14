@@ -387,4 +387,23 @@ border: none;
   margin-left: 30%;
   font-family: 'Quando', serif;
   border-radius: 5px;
+ 
+}
+
+.boton-comprar {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-left: 30%;
+  font-family: 'Quando', serif;
+  border-radius: 5px;
+}
+
+.botones {
+  display: flex;
+  justify-content: center;
+  margin-left: -30px;
+  margin-right: 70px;
 }
