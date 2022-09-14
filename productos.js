@@ -1,191 +1,109 @@
-// quierocomprar.html
-const tritato = []
+const contenedorProductos = document.getElementById('contenedor-productos')
 
-class producto {
-    constructor(id, tipoDeProducto, precio, especialidad, img) {
-        this.id = id;
-        this.tipoDeProducto = tipoDeProducto;
-        this.precio = precio;
-        this.especialidad = especialidad;
-        this.img = img;
+
+const contenedorCarrito = document.getElementById('carrito-contenedor')
+const botonVaciar = document.getElementById('vaciar-carrito')
+const contadorCarrito = document.getElementById('contadorCarrito')
+
+const cantidad = document.getElementById('cantidad')
+const precioTotal = document.getElementById('precioTotal')
+const cantidadTotal = document.getElementById('cantidadTotal')
+
+let carrito = []
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('carrito')){
+        carrito = JSON.parse(localStorage.getItem('carrito'))
+        actualizarCarrito()
     }
-}
-
-tritato.push(new producto (1, "Picada", 2750, "Comen 2 Pican 4", '../images/picadaa.JPG')),
-tritato.push(new producto (2, "Picada", 5500, "Comen 4 Pican 8", '../images/picadaa.JPG'))
-tritato.push(new producto (3, "Picada", 8200, "Comen 6 Pican 10", '../images/picadaa.JPG'))
-tritato.push(new producto (4, "Brunch", 3500, "Sandwich de Lomo y Queso, en Pan de Masa Madre. Scones de Queso y Tomillo. Mini Budines de Naranja y Amapolas. Lingote de Chocotorta. Juego de Naranja exprimido. Infusiones", '../images/brunchs.jpg'))
-tritato.push(new producto (5, "Panificados", 850, "Focaccia Grande", '../images/panMasaMadre2.jpg'))
-tritato.push(new producto (6, "Panificados", 550, "Focaccia Chica", '../images/panMasaMadre2.jpg'))
-tritato.push(new producto (7, "Panificados", 650, "Chips Brioche (12 unidades)", '../images/panMasaMadre2.jpg'))
-tritato.push(new producto (8, "Panificados", 400, "Pan de Papa para Burguer (4 unidades)", '../images/panMasaMadre2.jpg'))
-tritato.push(new producto (9, "Panificados", 850, "Pan de Masa Madre Grande", '../images/panMasaMadre2.jpg'))
-tritato.push(new producto (10, "Panificados", 550, "Pan de Masa Madre Chico", '../images/panMasaMadre2.jpg'))
-tritato.push(new producto (11, "Panificados", 500, "Pan Lacteado Artesano", '../images/panMasaMadre2.jpg'))
-tritato.push(new producto (12, "Panificados", 500, "Pan Lactal Integral", '../images/panMasaMadre2.jpg'))
-
-// Desestructuracion del array tritato
-
-const [a, b, c] = tritato
-console.log(a)
-console.log(b)
-console.log(c)
-
-// spread del array tritato
-
-console.log(...tritato)
-
-// MODAL //
-const modalContainer = document.querySelector('#modal-container')
-const carritoContenedor = document.querySelector('#modal')
-
-const abrirModal = document.querySelector('#modal-open')
-const cerrarModal = document.querySelector('#modal-close')
-const btnModal = document.querySelector('#modal-open')
-const precioTotal = document.querySelector('#preciototal')
-
-abrirModal.addEventListener('click', () => {
-    modalContainer.classList.toggle('modal-container-active')
 })
 
-cerrarModal.addEventListener('click',() =>{
-    modalContainer.classList.toggle('modal-container-active')
-})
-
-carritoContenedor.addEventListener('click', (event)=>{
-    event.stopPropagation()
+botonVaciar.addEventListener('click', () => {
+    carrito.length = 0
+    actualizarCarrito()
 })
 
 
-// Aplicando Libreria al Modal
-
-btnModal.addEventListener('click', () => {
-
-    Swal.fire({
-        title: 'Este es tu carrito!',
-        text: 'Estas a tiempo de hacer modificaciones',
-        icon: 'success',
-        confirmButtonText: 'Ok',
-        confirmButtonColor: '#412F26',
-})
-})
-
-// renderizado productos
-const productos = document.querySelector('#productosContenedor')
-
-tritato.forEach( (producto) => {
+stockProductos.forEach((producto) => {
     const div = document.createElement('div')
-
-    div.className = "producto"
+    div.classList.add('producto')
     div.innerHTML = `
-                 <img class="comida" src=${producto.img} alt="">
-                 <h5 class="card-title mt-3 mb-3">${producto.tipoDeProducto}</h5><hr>
-                 <p class="tipoDeProducto">${producto.especialidad}</p>
-                 <p class="precioProducto">Precio: $${producto.precio}</p>
-                 <img src="../images/icons8-carro-favorito-24.png" width="30px" alt="Agregar al Carrito">
-                 <button id="agregar-${producto.id}" class="btn btn-outline-success suma">+</button>
-                 <button id="eliminar-${producto.id}" class="btn btn-outline-danger resta">-</button>
+    <img src=${producto.img} alt= "Imagen" class="comida">
+    <h3>${producto.nombre}</h3>
+    <p>${producto.desc}</p>
+    <p class="precioProducto">Precio:$ ${producto.precio}</p>
+    <button id="agregar${producto.id}" class="boton-agregar">Agregar <i class="fas fa-shopping-cart"></i></button>
+
     `
-    productos.append(div)
+    contenedorProductos.appendChild(div)
 
-// crear id para que agregue y elimine producto al carrito con los botones + y -
-
-    const btnAgregar = document.querySelector(`#agregar-${producto.id}`)
-
-    btnAgregar.addEventListener('click', () => {
+    const boton = document.getElementById(`agregar${producto.id}`)
+    boton.addEventListener('click', () => {
         agregarAlCarrito(producto.id)
     })
-
-    const btnEliminar = document.querySelector(`#eliminar-${producto.id}`)
-
-    btnEliminar.addEventListener('click', () => {
-        eliminarDelCarrito(producto.id)
-    } )
-})  
+})
 
 
-// hacer que los botones de agregar al carrito funcionen / operador lógico OR ( || )
-const carrito = JSON.parse(localStorage.getItem('carrito')) || []
+const agregarAlCarrito = (prodId) => {
 
-const agregarAlCarrito = (id) => {
-    const producto = tritato.find( (prod) => prod.id === id)
 
-    carrito.push(producto)
+    const existe = carrito.some (prod => prod.id === prodId) 
 
-    localStorage.setItem('carrito', JSON.stringify(carrito))
+    if (existe){
+        const prod = carrito.map (prod => {
+            if (prod.id === prodId){
+                prod.cantidad++
+            }
+        })
+    } else {
+        const item = stockProductos.find((prod) => prod.id === prodId)
+        carrito.push(item)
+    }
 
-    console.log(carrito)
+    actualizarCarrito()
+}
 
-    renderCarrito()
-} 
 
-const eliminarDelCarrito = (id) => {
-    const producto = carrito.find((prod) => prod.id === id)
-    const indice = carrito.indexOf(producto)
+
+const eliminarDelCarrito = (prodId) => {
+    const item = carrito.find((prod) => prod.id === prodId)
+
+    const indice = carrito.indexOf(item)
 
     carrito.splice(indice, 1)
 
-    localStorage.setItem('carrito', JSON.stringify(carrito))
-
-    renderCarrito()
-}
-const btnVaciar = document.querySelector('#vaciarCarrito')
-
-const vaciarCarrito = () => {
-    carrito.length = 0
-    localStorage.setItem('carrito', JSON.stringify(carrito))
-
-    renderCarrito()
+    actualizarCarrito() 
+    console.log(carrito)
 }
 
-btnVaciar.addEventListener('click', vaciarCarrito)
+const actualizarCarrito = () => {
 
+    contenedorCarrito.innerHTML = "";
 
-// agregando productos al carrito
+    carrito.forEach((prod) => {
+        const div = document.createElement('div')
+        div.className = ('productoEnCarrito')
+        div.innerHTML = `
+        <p>${prod.nombre}</p>
+        <p>Precio:$${prod.precio}</p>
+        <p>Cantidad: <span id="cantidad">${prod.cantidad}</span></p>
+        <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
+        `
 
-const renderCarrito = () => {
-    // carritoContenedor.innerHTML = ""
+        contenedorCarrito.appendChild(div)
+        
+        localStorage.setItem('carrito', JSON.stringify(carrito))
 
-    carrito.forEach((prod) => { 
-               const div = document.createElement('div')
-               div.className = "productoEnCarrito"
-
-               div.innerHTML = `
-                        <p>${prod.tipoDeProducto}</p>
-                        <p>Precio: $${prod.precio}</p>
-                        <button onclick="eliminarDelcarrito(${prod.id}) class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
-                `
-
-               carritoContenedor.append(div)
-           
     })
-
-actualizarCantidad()
-}
-
-const contadorCarrito = document.querySelector('#contadorCarrito')
-
-const actualizarCantidad = () => {
     contadorCarrito.innerText = carrito.length
+    console.log(carrito)
+    precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)
+
 }
-
-// operador ternario AND
-
-carrito.length === 0 && console.log("El carrito está vacío!")
-
-// reflejar el precio en el carrito
-
-const actualizarTotal = () => {
-    precioTotal.innerText = carrito.reduce((acc, prod) => acc *= prod.precio, 0)
-
-    actualizarTotal()
-}
-
-renderCarrito()
 
 // agregando opciones de bebidas con fetch
 
-const bebidas = document.querySelector('#bebidas')
+const bebidas = document.getElementById('bebidas')
 
 fetch('/data.json')
     .then( (res) => res.json())
@@ -200,6 +118,7 @@ fetch('/data.json')
                 <hr/>
             `
    
-            bebidas.append(li)
+            bebidas.appendChild(li);
         })
     })
+
