@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 * {
   padding: 0;
   margin: 0;
@@ -407,3 +408,22 @@ border: none;
   margin-left: -30px;
   margin-right: 70px;
 }
+=======
+body {
+    margin: 0%;
+    margin-left: 10px;
+    background-color: bisque;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+ul {
+    font-weight: bold;
+    color: chocolate;
+    text-decoration: dotted;
+}
+
+li {
+    margin: 10px;
+    margin-left: 5px;
+}
+>>>>>>> 344c65d9ddb77df607e60482021c4f6599054f6b

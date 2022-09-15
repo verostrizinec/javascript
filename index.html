@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quando&display=swap" rel="stylesheet">
@@ -160,5 +161,73 @@
 <script src="./app.js"></script>
 <script src="./stock.js"></script>
 <script src="./modal.js"></script>
+=======
+    <link rel="stylesheet" href="./css/main.css">
+    <title>Practicando JS</title>
+</head>
+<body>
+    <h1>Curso de JavaScript</h1>
+    <hr>
+
+    <h2>Antes de empezar vamos a repasar Git y GitHub</h2>
+
+    <!--Verificando versión de GIT:    git --version-->
+
+    <!--Comandos Basicos
+    HELP: muestra lista de comandos
+    DIR: Sirve para ver el contenido de una carpeta
+    CD: Entrar o salir de una carpeta
+    CLEAR: limpia la consola
+    MKDIR: Crear una carpeta nueva
+    RMDIR: Eliminar una carpeta
+    MOVE y COPY: Mover y copiar archivos
+    RENAME: Renombrar archivo o carpeta
+    DEL: Eliminar un archivo
+    EXIT: Cierra la ventana de la linea de comandos
+    COPY CON: Crear archivos-->
+
+    <h3>Crear un nuevo repositorio en Git</h3>
+    <ul>Git Init</ul>
+        <li>Me ubico en la carpeta donde quiero crear el proyecto: cd</li>
+        <li>Inicio el proyecto con el nombre que le asigné al repositorio "JavaScript": git init javascript</li>
+        <li>Comprobamos que el repositorio se creó: dir javascript</li>
+        <li>Me ubico en el repositorio: cd javascript</li>
+
+    <ul>Git Status</ul>
+        <li>Con Git Status chequeamos el estado del repositorio: git status</li>
+
+    <ul>Git Add</ul>
+        <li>Se usa Git Add para adherir el archivo para subirlo al repo</li>
+        <li>Por ejemplo: git add index.html</li>
+
+    <p>Una vez que los archivos estan en el Staging Area hay que pasarlos al repositorio local con Git Commit.</p>
+
+    <p>Git commit -m "Comentario de que se trata el commit que estamos haciendo".</p>
+        <li>Por ejemplo: git commit -m "Repasando Git"</li>
+
+    <h3>RAMAS</h3>
+
+    <p>Cuando queres agregar una nueva función o solucionar un error generas una rama para agregar estos cambios</p>
+    <p>Como crear una rama?</p>
+
+    <li>git branch nuevaRama</li>
+
+    <div>
+        <ul>Pasos para crear una rama</ul>
+            <li>Verifico en que rama estoy: git branch</li>
+            <li>Creo la rama: git branch nuvaRama</li>
+            <li>Verifico que se creó la rama: git branch -l</li>
+        
+    </div>
+
+    <p>Para movernos entre ramas: git checkout nombreDeRama</p>
+    <p>Verifico que realmente me movi: git branch -l</p>
+   
+    <ul>Como subir el repositorio</ul>
+        <li>Me ubico en el repositorio con "cd"</li>
+        <li>git remote add origin https://github.com/miuser/javascript.git</li>
+        <li>git push -u origin master</li>
+    <script src="app.js"></script>
+>>>>>>> 344c65d9ddb77df607e60482021c4f6599054f6b
 </body>
 </html>
